@@ -4,11 +4,10 @@ using System.Text;
 
 namespace Domain
 {
-    class User
+    class DomainMemory
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public List<Comment> Comments { get; set; }
         public List<Photo> Photos { get; set; }
+        public List<User> Users { get; set; }
     }
 }

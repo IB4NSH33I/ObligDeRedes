@@ -6,6 +6,7 @@ namespace Domain
 {
     class Photo
     {
-        public User Owner { get; set; }
+        public int Id { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

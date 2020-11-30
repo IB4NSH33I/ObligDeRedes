@@ -6,8 +6,8 @@ namespace Domain
 {
     class Comment
     {
-        public Photo Photo { get; set; }
-        public User Commenter { get; set; }
+        public int Id { get; set; }
+        public User Author { get; set; }
         public string Data { get; set; }
     }
 }
