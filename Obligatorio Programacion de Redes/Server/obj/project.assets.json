@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Server\\Server.csproj",
+      "projectUniqueName": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Server\\Server.csproj",
+      "projectPath": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\jumar\\.nuget\\packages\\",
-      "outputPath": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Server\\obj\\",
+      "outputPath": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

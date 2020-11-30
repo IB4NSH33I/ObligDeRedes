@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Domain\\Domain.csproj": {}
+    "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Domain\\Domain.csproj": {
+    "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Domain\\Domain.csproj",
+        "projectPath": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\jumar\\.nuget\\packages\\",
-        "outputPath": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Domain\\obj\\",
+        "outputPath": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

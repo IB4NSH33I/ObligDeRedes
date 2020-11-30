@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jotkgFmNrDLJE80sIiTJ4oXWCW2yWinQNkQj9lsdY8Gg/KClzlGSYX9JM1krSyRprK2Okl3vKSidL3vIsdLVmg==",
+  "dgSpecHash": "6nuReRYS35xTKrHvpziVMzTKoIuVA1sQQKGKj9dhKR1zXNCB6HZVMoVelP21z+DA471N5+08jZ73WQpW1QjN4A==",
   "success": true,
-  "projectFilePath": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Server\\Server.csproj",
+  "projectFilePath": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

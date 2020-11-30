@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Client\\Client.csproj": {}
+    "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Client\\Client.csproj": {}
   },
   "projects": {
-    "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Client\\Client.csproj": {
+    "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Client\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Client\\Client.csproj",
+        "projectUniqueName": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Client\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Client\\Client.csproj",
+        "projectPath": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Client\\Client.csproj",
         "packagesPath": "C:\\Users\\jumar\\.nuget\\packages\\",
-        "outputPath": "E:\\ORT\\Programacion de Redes\\Oblig\\Obligatorio Programacion de Redes\\Client\\obj\\",
+        "outputPath": "E:\\ORT\\Programacion de Redes\\ObligDeRedes\\Obligatorio Programacion de Redes\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
