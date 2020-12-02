@@ -8,5 +8,6 @@ namespace Common.MessageProtocol
     {
         public static int Login = 1;
         public static int ListUsers = 2;
+        public static int Register = 3;
     }
 }
