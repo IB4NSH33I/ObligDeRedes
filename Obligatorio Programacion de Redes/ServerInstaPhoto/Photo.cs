@@ -37,5 +37,17 @@ namespace ServerInstaPhoto
             return photos;
         }
 
+        public override bool Equals(object obj)
+        {
+            Photo objd = obj as Photo;
+
+            if (objd == null)
+            {
+                return false;
+            }
+
+            return objd.Name.Equals(this.Name);
+        }
+
     }
 }

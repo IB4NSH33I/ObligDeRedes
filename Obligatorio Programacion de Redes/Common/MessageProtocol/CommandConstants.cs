@@ -11,6 +11,7 @@ namespace Common.MessageProtocol
         public const int Register = 3;
         public const int ListUserPhotos = 4;
         public const int UploadFile = 5;
+        public const int CommentPhoto = 6;
         public const int UserLogged = 15;
         public const int UserNotLogged = 16;
     }

@@ -136,9 +136,9 @@ namespace ServerInstaPhoto
                                 {
                                     fileresponse = SearchUser(userName).showUserPhotos();
                                 }
-                                Message fiesMessage = new Message(HeaderConstants.Response, CommandConstants.ListUserPhotos, fileresponse);
+                                Message filesMessage = new Message(HeaderConstants.Response, CommandConstants.ListUserPhotos, fileresponse);
 
-                                MessageProtocol.SendMessage(clientSocket, fiesMessage);
+                                MessageProtocol.SendMessage(clientSocket, filesMessage);
 
                             }
                             catch (Exception)
@@ -146,6 +146,33 @@ namespace ServerInstaPhoto
                             }
                             break;
 
+
+                        case CommandConstants.CommentPhoto:
+                            try
+                            {
+                                string photoName = message.MessageText;
+                                string fileresponse = "";
+
+                                Photo commentedPhoto = SearchPhoto(connectedUser, photoName);
+                                if (!PhotoExist(connectedUser, photoName))
+                                {
+                                    fileresponse = "Foto invalida";
+                                }
+                                else
+                                {
+                                    fileresponse = SearchPhoto(connectedUser, photoName).showComments();
+                                }
+
+                                Message commentMessage = new Message(HeaderConstants.Response, CommandConstants.CommentPhoto, fileresponse);
+
+                                MessageProtocol.SendMessage(clientSocket, commentMessage);
+                            }
+                            catch (Exception)
+                            {
+
+                                throw;
+                            }
+                            break;
 
                         case CommandConstants.UserNotLogged:
                             connectedUser = null;
@@ -210,6 +237,17 @@ namespace ServerInstaPhoto
         {
             User finduser = UsersList.Find(x => x.Name.Equals(name));
             return finduser;
+        }
+
+        private static bool PhotoExist(User connectedUser, string name)
+        {
+            return connectedUser.PhotoList.Contains(connectedUser.PhotoList.First(u => u.Name.Equals(name)));
+        }
+
+        private static Photo SearchPhoto(User connectedUser, string name)
+        {
+            Photo photo = connectedUser.PhotoList.Find(x => x.Name.Equals(name));
+            return photo;
         }
 
         private static string ShowUsers()

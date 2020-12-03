@@ -71,6 +71,14 @@ namespace Cliente
                             MessageProtocol.SendMessage(socket, logoutMessage);
                             break;
 
+                        case "photoC":
+                            string photoName = userForm("Ingrese nombre de la foto");
+                            Message photoMessage = new Message(HeaderConstants.Request, CommandConstants.CommentPhoto, photoName);
+                            MessageProtocol.SendMessage(socket, photoMessage);
+                            Message photoResponse = MessageProtocol.ReceiveMessage(socket);
+                            Console.WriteLine(photoResponse.MessageText);
+                            break;
+
                         case "exit":
                             socket.Shutdown(SocketShutdown.Both);
                             socket.Close();
@@ -144,6 +152,7 @@ namespace Cliente
             Console.WriteLine("upload -> Subir una foto");
             Console.WriteLine("users -> Listado de Usuarios");
             Console.WriteLine("userP -> Listado de fotos de un usuario");
+            Console.WriteLine("photoC -> Listado de comentarios de una foto");
             Console.WriteLine("logout -> Cerrar sesion");
             Console.WriteLine("exit -> abandonar el programa");
             Console.WriteLine("Ingrese su opcion: ");
