@@ -59,10 +59,11 @@ namespace Cliente
                             break;
 
                         case "userP":
-                            Message userMessage = new Message(HeaderConstants.Request, CommandConstants.Register);
+                            string userName = userForm("Ingrese nombre del usuario");
+                            Message userMessage = new Message(HeaderConstants.Request, CommandConstants.ListUserPhotos, userName);
                             MessageProtocol.SendMessage(socket, userMessage);
-                            //Message messageResponse = MessageProtocol.ReceiveMessage(socket);
-                            //Console.WriteLine(messageResponse.MessageText);
+                            Message userPhotosResponse= MessageProtocol.ReceiveMessage(socket);
+                            Console.WriteLine(userPhotosResponse.MessageText);
                             break;
 
                         case "logout":

@@ -122,6 +122,31 @@ namespace ServerInstaPhoto
 
                             break;
 
+                        case CommandConstants.ListUserPhotos:
+                            try
+                            {
+
+                                string userName = message.MessageText;
+                                string fileresponse = "";
+                                if (!UserExist(userName))
+                                {
+                                    fileresponse = "Usuario invalido";
+                                }
+                                else
+                                {
+                                    fileresponse = SearchUser(userName).showUserPhotos();
+                                }
+                                Message fiesMessage = new Message(HeaderConstants.Response, CommandConstants.ListUserPhotos, fileresponse);
+
+                                MessageProtocol.SendMessage(clientSocket, fiesMessage);
+
+                            }
+                            catch (Exception)
+                            {
+                            }
+                            break;
+
+
                         case CommandConstants.UserNotLogged:
                             connectedUser = null;
                             break;
@@ -158,11 +183,11 @@ namespace ServerInstaPhoto
 
         }
 
-        public static void RegisterLogic(string clientMessage,Socket socket)
+        public static void RegisterLogic(string clientMessage, Socket socket)
         {
             User newUser = new User(clientMessage);
             UsersList.Add(newUser);
-            Message serverMessage = new Message(HeaderConstants.Response, CommandConstants.Register,"Usuario Registrado");
+            Message serverMessage = new Message(HeaderConstants.Response, CommandConstants.Register, "Usuario Registrado");
             MessageProtocol.SendMessage(socket, serverMessage);
         }
 
