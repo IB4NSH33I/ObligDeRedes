@@ -17,6 +17,7 @@ namespace Common.MessageProtocol
         public Message(string direction, int command)
         {
             Header = new Header(direction, command, 0);
+            MessageText = "";
         }
 
         public Message(string direction, int command, string message)

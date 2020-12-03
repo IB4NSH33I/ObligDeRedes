@@ -1,4 +1,6 @@
-﻿using Common.MessageProtocol;
+﻿using Common.FileHandler;
+using Common.MessageProtocol;
+using Common.Protocol;
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -24,25 +26,80 @@ namespace Cliente
 
             Console.WriteLine("Conectado al servidor!");
 
-            Console.WriteLine("Bienvenido al Sistema Client");
-            Console.WriteLine("Opciones validas: ");
-            Console.WriteLine("login -> Iniciar Sesion");
-            Console.WriteLine("register -> Registrar");
-            Console.WriteLine("exit -> abandonar el programa");
-            Console.WriteLine("Ingrese su opcion: ");
-
             while (isRunning)
             {
+                Message authMessage = new Message(HeaderConstants.Request, CommandConstants.UserLogged);
+                MessageProtocol.SendMessage(socket, authMessage);
+                Message authMessageResponse = MessageProtocol.ReceiveMessage(socket);
+
+                if (authMessageResponse.Header.ICommand == CommandConstants.UserLogged)
+                {
+
+                    showAuthMenu();
+                    var opcion = Console.ReadLine();
+                    switch (opcion)
+                    {
+                        case "users":
+                            Message loginMessage = new Message(HeaderConstants.Request, CommandConstants.ListUsers);
+                            MessageProtocol.SendMessage(socket, loginMessage);
+                            Message messageResponse = MessageProtocol.ReceiveMessage(socket);
+                            Console.WriteLine(messageResponse.MessageText);
+                            break;
+
+                        case "upload":
+                            string userpath = userForm("Ingrese direccion del archivo");
+                            while (!Handler.FileExists(userpath)) {
+                                userpath = userForm("Ingrese una direccion correcta del archivo");
+                            }
+                            Message userFileMessage = new Message(HeaderConstants.Request, CommandConstants.UploadFile, userpath);
+                            MessageProtocol.SendMessage(socket, userFileMessage);
+
+                            FileProtocol fp = new FileProtocol(socket);
+                            fp.SendFile(userpath);
+                            break;
+
+                        case "userP":
+                            Message userMessage = new Message(HeaderConstants.Request, CommandConstants.Register);
+                            MessageProtocol.SendMessage(socket, userMessage);
+                            //Message messageResponse = MessageProtocol.ReceiveMessage(socket);
+                            //Console.WriteLine(messageResponse.MessageText);
+                            break;
+
+                        case "logout":
+                            Message logoutMessage = new Message(HeaderConstants.Request, CommandConstants.UserNotLogged);
+                            MessageProtocol.SendMessage(socket, logoutMessage);
+                            break;
+
+                        case "exit":
+                            socket.Shutdown(SocketShutdown.Both);
+                            socket.Close();
+                            isRunning = false;
+                            break;
+
+                        default:
+                            Console.WriteLine("Opcion invalida");
+                            break;
+                    }
+                }
+                else
+                {
+                showClientMenu();
                 var opcion = Console.ReadLine();
+
                 switch (opcion)
                 {
                     case "login":
-                        Console.WriteLine("Ingrese nombre de usuario:");
-                        var userLogin = Console.ReadLine();
-                        Console.WriteLine("Ingrese contraseña:");
-                        var passwordLogin = Console.ReadLine();
-                        Message loginMessage = new Message(HeaderConstants.Request, CommandConstants.Register, userLogin + "#" + passwordLogin);
+                        string userLogin = userForm("Ingrese Nombre de usuario");
+                        Message loginMessage = new Message(HeaderConstants.Request, CommandConstants.Login, userLogin);
                         MessageProtocol.SendMessage(socket, loginMessage);
+                        break;
+
+                    case "register":
+                        string userRegister = userForm("Ingrese Nombre de usuario");
+                        Message userMessage = new Message(HeaderConstants.Request, CommandConstants.Register, userRegister);
+                        MessageProtocol.SendMessage(socket, userMessage);
+                        Message messageResponse = MessageProtocol.ReceiveMessage(socket);
+                        Console.WriteLine(messageResponse.MessageText);
                         break;
 
                     case "exit":
@@ -51,25 +108,44 @@ namespace Cliente
                         isRunning = false;
                         break;
 
-                    case "register":
-                        Console.WriteLine("Ingrese nombre de usuario:");
-                        var user = Console.ReadLine();
-                        Console.WriteLine("Ingrese contraseña:");
-                        var password = Console.ReadLine();
-                        Message userMessage = new Message(HeaderConstants.Request, CommandConstants.Register, user + "#" +password);
-                        MessageProtocol.SendMessage(socket, userMessage);
-                        Message messageResponse = MessageProtocol.ReceiveMessage(socket);
-                        Console.WriteLine(messageResponse.MessageText);
-                        break;
-
                     default:
                         Console.WriteLine("Opcion invalida");
                         break;
                 }
+                }
+
             }
-            
+
             Console.WriteLine("Cerrando Applicación");
 
+        }
+
+        private static string userForm(string console)
+        {
+            Console.WriteLine(console);
+            var returnString = Console.ReadLine();
+            return returnString;
+        }
+
+        private static void showClientMenu()
+        {
+            Console.WriteLine("Bienvenido al Sistema InstaPhoto");
+            Console.WriteLine("Opciones validas: ");
+            Console.WriteLine("login -> Iniciar Sesion");
+            Console.WriteLine("register -> Registrar");
+            Console.WriteLine("exit -> abandonar el programa");
+            Console.WriteLine("Ingrese su opcion: ");
+        }
+        private static void showAuthMenu()
+        {
+            Console.WriteLine("Bienvenido al Sistema InstaPhoto");
+            Console.WriteLine("Opciones validas: ");
+            Console.WriteLine("upload -> Subir una foto");
+            Console.WriteLine("users -> Listado de Usuarios");
+            Console.WriteLine("userP -> Listado de fotos de un usuario");
+            Console.WriteLine("logout -> Cerrar sesion");
+            Console.WriteLine("exit -> abandonar el programa");
+            Console.WriteLine("Ingrese su opcion: ");
         }
     }
 }

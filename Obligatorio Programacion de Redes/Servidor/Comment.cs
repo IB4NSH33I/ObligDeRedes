@@ -11,5 +11,12 @@ namespace Servidor
         
         public string Text { get; set; }
 
+        public Comment(User author, string text)
+        {
+            Author = author;
+            Text = text;
+        }
+
     }
+
 }
